@@ -76,6 +76,8 @@ const translations = {
         color: "Color",
         weight: "Weight",
         spacing: "Spacing",
+        glow: "Glow",
+        opacity: "Opacity",
         brightness: "Brightness",
         letterSpacing: "Letter",
         lineHeight: "Line",
@@ -96,6 +98,8 @@ const translations = {
         color: "Цвет",
         weight: "Жирность",
         spacing: "Интервалы",
+        glow: "Свечение",
+        opacity: "Прозрачн.",
         brightness: "Яркость",
         letterSpacing: "Межбуквенный",
         lineHeight: "Межстрочный",
@@ -116,6 +120,8 @@ const translations = {
         color: "Колір",
         weight: "Жирність",
         spacing: "Інтервали",
+        glow: "Світіння",
+        opacity: "Прозорість",
         brightness: "Яскравість",
         letterSpacing: "Міжбуквений",
         lineHeight: "Міжрядковий",
@@ -139,6 +145,11 @@ let currentSpacing = 0;
 let currentLineHeight = 1.3;
 let currentAlignment = 'center';
 let generatedDataUrl = null; 
+
+let currentGlowHue = 0;
+let currentGlowBright = 100;
+let currentGlowOpacity = 50;
+let currentGlowSize = 20;
 
 const fontPreview = document.getElementById('fontPreview');
 const fontName = document.getElementById('fontName');
@@ -167,6 +178,15 @@ const spacingLabel = document.getElementById('spacingLabel');
 const lineHeightSlider = document.getElementById('lineHeightSlider');
 const lineHeightLabel = document.getElementById('lineHeightLabel');
 const indicator = document.getElementById('indicator');
+
+const glowColorSlider = document.getElementById('glowColorSlider');
+const glowBrightnessSlider = document.getElementById('glowBrightnessSlider');
+const glowOpacitySlider = document.getElementById('glowOpacitySlider');
+const glowSizeSlider = document.getElementById('glowSizeSlider');
+const glowIndicator = document.getElementById('glowIndicator');
+const glowBrightLabel = document.getElementById('glowBrightLabel');
+const glowOpacityLabel = document.getElementById('glowOpacityLabel');
+const glowSizeLabel = document.getElementById('glowSizeLabel');
 
 const searchBtn = document.getElementById('searchBtn');
 const searchPanel = document.getElementById('searchPanel');
@@ -301,15 +321,33 @@ function updateTextColor() {
     fontPreview.style.color = hslColor;
     indicator.style.backgroundColor = hslColor;
     brightnessSlider.style.background = `linear-gradient(to right, #000000, hsl(${currentHue}, 100%, 50%), #ffffff)`;
+    fontPreview.style.filter = 'none';
+    updateGlowDOM();
+}
 
-    fontPreview.style.textShadow = 'none';
+function updateGlowDOM() {
+    const a = currentGlowOpacity / 100;
+    const colorStr = `hsla(${currentGlowHue}, 100%, ${currentGlowBright}%, ${a})`;
+    glowIndicator.style.backgroundColor = `hsl(${currentGlowHue}, 100%, ${currentGlowBright}%)`;
     
-    fontPreview.style.filter = `
-        drop-shadow(0px 0px 3px #474646) 
-        drop-shadow(0px 0px 8px rgba(114, 114, 114, 0.9)) 
-        drop-shadow(0px 0px 20px rgba(104, 104, 104, 0.7)) 
-        drop-shadow(0px 0px 45px rgba(255, 255, 255, 0.5))
-    `;
+    glowBrightnessSlider.style.background = `linear-gradient(to right, #000000, hsl(${currentGlowHue}, 100%, 50%), #ffffff)`;
+    glowOpacitySlider.style.background = `linear-gradient(to right, transparent, hsl(${currentGlowHue}, 100%, ${currentGlowBright}%))`;
+
+    if (currentGlowOpacity == 0 || currentGlowSize == 0) {
+        fontPreview.style.textShadow = 'none';
+    } else {
+        const s = parseInt(currentGlowSize);
+        fontPreview.style.textShadow = `
+            0 0 ${s * 0.1}px ${colorStr},
+            0 0 ${s * 0.2}px ${colorStr},
+            0 0 ${s * 0.3}px ${colorStr},
+            0 0 ${s * 0.5}px ${colorStr},
+            0 0 ${s * 0.75}px ${colorStr},
+            0 0 ${s}px ${colorStr},
+            0 0 ${s * 1.25}px ${colorStr},
+            0 0 ${s * 1.5}px ${colorStr}
+        `;
+    }
 }
 
 function updateWeightDOM() {
@@ -436,6 +474,29 @@ sizeSlider.addEventListener('input', (e) => {
     updateWeightDOM();
 });
 
+glowColorSlider.addEventListener('input', (e) => {
+    currentGlowHue = e.target.value;
+    updateGlowDOM();
+});
+
+glowBrightnessSlider.addEventListener('input', (e) => {
+    currentGlowBright = e.target.value;
+    glowBrightLabel.textContent = `${currentGlowBright}%`;
+    updateGlowDOM();
+});
+
+glowOpacitySlider.addEventListener('input', (e) => {
+    currentGlowOpacity = e.target.value;
+    glowOpacityLabel.textContent = `${currentGlowOpacity}%`;
+    updateGlowDOM();
+});
+
+glowSizeSlider.addEventListener('input', (e) => {
+    currentGlowSize = e.target.value;
+    glowSizeLabel.textContent = `${currentGlowSize}px`;
+    updateGlowDOM();
+});
+
 textInput.addEventListener('input', () => {
     updateSlider(currentIndex);
 });
@@ -491,8 +552,8 @@ applyBtn.addEventListener('click', () => {
     const userSize = parseInt(sizeSlider.value);
     
     const scaleFactor = 5; 
-    const basePadding = 40; 
-    const canvasPadding = basePadding * scaleFactor; 
+    const dynamicPadding = Math.max(40, parseInt(currentGlowSize) * 1.5 + 20);
+    const canvasPadding = dynamicPadding * scaleFactor; 
 
     const previewRect = fontPreview.getBoundingClientRect();
     const computedStyle = window.getComputedStyle(fontPreview);
@@ -555,6 +616,28 @@ applyBtn.addEventListener('click', () => {
 
         let yPos = canvasPadding;
         lines.forEach(line => {
+            if (currentGlowOpacity > 0 && currentGlowSize > 0) {
+                const a = currentGlowOpacity / 100;
+                const c = `hsla(${currentGlowHue}, 100%, ${currentGlowBright}%, ${a})`;
+                const s = currentGlowSize * scaleFactor;
+                
+                ctx.shadowColor = c;
+                
+                const layers = [s * 0.1, s * 0.2, s * 0.3, s * 0.5, s * 0.75, s, s * 1.25, s * 1.5];
+                layers.forEach(blur => {
+                    ctx.shadowBlur = blur;
+                    ctx.shadowOffsetX = 0;
+                    ctx.shadowOffsetY = 0;
+                    if (weightValue > 400) {
+                        ctx.strokeText(line, xPos, yPos);
+                    }
+                    ctx.fillText(line, xPos, yPos);
+                });
+                
+                ctx.shadowColor = "transparent";
+                ctx.shadowBlur = 0;
+            }
+
             if (weightValue > 400) {
                 ctx.strokeText(line, xPos, yPos);
             }
