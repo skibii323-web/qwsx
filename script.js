@@ -107,6 +107,26 @@ const translations = {
         logout: "Выйти",
         nothingFound: "Ничего не найдено",
         modalWarning: "Нажмите «Скачать PNG».<br><strong style='color: #ffcc00; display: block; margin-top: 8px; font-size: 13px;'>Если кнопка не работает (iPhone/Google chrome) — попробуйте другой браузер (Safari) или просто зажмите картинку ниже пальцем и выберите «Сохранить в Фото».</strong>"
+    },
+    ua: {
+        beta: "Бета-тест, можливі баги",
+        inputPlaceholder: "Введіть свій текст...",
+        size: "Розмір",
+        searchPlaceholder: "Назва шрифту...",
+        color: "Колір",
+        weight: "Жирність",
+        spacing: "Інтервали",
+        brightness: "Яскравість",
+        letterSpacing: "Міжбуквений",
+        lineHeight: "Міжрядковий",
+        create: "Створити",
+        modalTitle: "Готово!",
+        modalDownload: "Завантажити PNG",
+        modalClose: "Закрити",
+        login: "Увійти",
+        logout: "Вийти",
+        nothingFound: "Нічого не знайдено",
+        modalWarning: "Натисніть «Завантажити PNG».<br><strong style='color: #ffcc00; display: block; margin-top: 8px; font-size: 13px;'>Якщо кнопка не працює (iPhone/Google chrome) — спробуйте інший браузер (Safari) або просто затисніть картинку нижче пальцем і виберіть «Зберегти в Фото».</strong>"
     }
 };
 
@@ -159,11 +179,18 @@ const closeModalBtn = document.getElementById('closeModalBtn');
 
 const MY_SITE = 'https://skibii323-web.github.io/qwsx/';
 const authContainer = document.getElementById('authContainer');
-const langSelector = document.getElementById('langSelector');
+
+const langDropdown = document.getElementById('langDropdown');
+const currentLangBtn = document.getElementById('currentLangBtn');
+const langDropdownContent = document.getElementById('langDropdownContent');
 
 function updateInterfaceLanguage(lang) {
     currentLang = lang;
-    document.querySelectorAll('[data-lang]').forEach(btn => {
+    if (currentLangBtn) {
+        currentLangBtn.textContent = lang.toUpperCase();
+    }
+
+    document.querySelectorAll('#langDropdownContent button').forEach(btn => {
         if(btn.getAttribute('data-lang') === lang) {
             btn.classList.add('active');
         } else {
@@ -215,11 +242,21 @@ function updateAuthZone() {
     }
 }
 
-langSelector.addEventListener('click', (e) => {
+currentLangBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    langDropdown.classList.toggle('open');
+});
+
+document.addEventListener('click', () => {
+    langDropdown.classList.remove('open');
+});
+
+langDropdownContent.addEventListener('click', (e) => {
     const target = e.target.closest('[data-lang]');
     if (target) {
         const selectedLang = target.getAttribute('data-lang');
         saveLanguage(selectedLang);
+        langDropdown.classList.remove('open');
     }
 });
 
