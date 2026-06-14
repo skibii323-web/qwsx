@@ -1,69 +1,69 @@
-@font-face { font-family: 'CalligraphiaOne'; src: url('fontls/Calligraphia_One.ttf'); }
-@font-face { font-family: 'AllegrettoScriptTwo'; src: url('fontls/Allegretto_Script_Two_Regular.ttf'); }
-@font-face { font-family: 'AllegrettoScriptOne'; src: url('fontls/Allegretto_Script_One_Regular.ttf'); }
-@font-face { font-family: 'AllegroScriptItalic'; src: url('fontls/AllegroScript_Italic.otf'); }
-@font-face { font-family: 'SegoeScript'; src: url('fontls/Segoe_Script.ttf'); }
-@font-face { font-family: 'BrockScriptD'; src: url('fontls/Brock_Script_D.ttf'); }
-@font-face { font-family: 'DiscipuliBritannica'; src: url('fontls/Discipuli_Britannica.ttf'); }
-@font-face { font-family: 'PresentScript'; src: url('fontls/PresentScript.ttf'); }
-@font-face { font-family: 'EuroscriptPro'; src: url('fontls/Euroscript_Pro.otf'); }
-@font-face { font-family: 'LovelyGrace'; src: url('fontls/Lovely_Grace_BG.ttf'); }
-@font-face { font-family: 'ADayWithoutSun'; src: url('fontls/A_Day_Without_Sun.otf'); }
-@font-face { font-family: 'AncientKyiv'; src: url('fontls/Ancient_Kyiv.ttf'); }
-@font-face { font-family: 'AAHigherup'; src: url('fontls/AA-Higherup.ttf'); }
-@font-face { font-family: 'AhellyaItalic'; src: url('fontls/Ahellya_Italic.ttf'); }
-@font-face { font-family: 'AmbassadoreTypeShura'; src: url('fontls/Ambassadore_Type_Shura.ttf'); }
-@font-face { font-family: 'AmbassadoreTypeItalic'; src: url('fontls/AmbassadoreType_Italic.ttf'); }
-@font-face { font-family: 'AntiqueOliveItalic'; src: url('fontls/Antique_Olive_Italic.ttf'); }
-@font-face { font-family: 'UbuntuMonoBold'; src: url('fontls/Ubuntu_Mono_Bold.ttf'); }
-@font-face { font-family: 'VDSBold'; src: url('fontls/VDS_Bold.ttf'); }
-@font-face { font-family: 'VeraHumana95BoldItalic'; src: url('fontls/Vera_Humana_95_BoldItalic.ttf'); }
-@font-face { font-family: 'VDSItalic'; src: url('fontls/VDS_Italic.ttf'); }
-@font-face { font-family: 'VDSItalicNew'; src: url('fontls/VDS_Italic_New.ttf'); }
-@font-face { font-family: 'VDSNew'; src: url('fontls/VDS_New.ttf'); }
-@font-face { font-family: 'VDSThin'; src: url('fontls/VDS_Thin.ttf'); }
-@font-face { font-family: 'VDSThinItalic'; src: url('fontls/VDS_Thin_Italic.ttf'); }
-@font-face { font-family: 'VodafoneExB'; src: url('fontls/Vodafone_ExB.ttf'); }
-@font-face { font-family: 'VodafoneRgBold'; src: url('fontls/Vodafone_Rg_Bold.ttf'); }
-@font-face { font-family: 'Watc'; src: url('fontls/Watc.TTF'); }
-@font-face { font-family: 'Aroania'; src: url('fontls/Aroania.otf'); }
-@font-face { font-family: 'AutoradiographicRgItalic'; src: url('fontls/Autoradiographic_Rg_Italic.ttf'); }
-@font-face { font-family: 'Avdira'; src: url('fontls/Avdira.otf'); }
-@font-face { font-family: 'AverBoldItalic'; src: url('fontls/Aver_Bold_Italic.ttf'); }
-@font-face { font-family: 'Azbuka02Italic'; src: url('fontls/Azbuka02_Italic.ttf'); }
-@font-face { font-family: 'BodoniCyrillicFWFBoldItalic'; src: url('fontls/BodoniCyrillicFWF_Bold_Italic.ttf'); }
-@font-face { font-family: 'BloggerSansMediumRegular'; src: url('fontls/Blogger_Sans_Medium_Regular.otf'); }
-@font-face { font-family: 'BookAntiquaItalic'; src: url('fontls/Book_Antiqua_Italic.ttf'); }
-@font-face { font-family: 'BrillRoman'; src: url('fontls/Brill_Roman.otf'); }
-@font-face { font-family: 'BravoRegular'; src: url('fontls/Bravo_Regular.otf'); }
-@font-face { font-family: 'CandaraItalic'; src: url('fontls/Candara_Italic.ttf'); }
-@font-face { font-family: 'CenturyGothicItalic'; src: url('fontls/Century_Gothic_Italic.ttf'); }
-@font-face { font-family: 'CenturySchoolbookItalic'; src: url('fontls/Century_Schoolbook_Italic.otf'); }
-@font-face { font-family: 'CenturySchoolbookBold'; src: url('fontls/Century_Schoolbook_Bold.otf'); }
-@font-face { font-family: 'ChampagneLimousines'; src: url('fontls/Champagne_&_Limousines.ttf'); }
-@font-face { font-family: 'CourierNewBold'; src: url('fontls/Courier_New_Bold.ttf'); }
-@font-face { font-family: 'CourierMCYBold'; src: url('fontls/CourierMCY_Bold.ttf'); }
-@font-face { font-family: 'CourierTMBoldItalic'; src: url('fontls/CourierTM_Bold_Italic.ttf'); }
-@font-face { font-family: 'CyrillicGaramondItalic'; src: url('fontls/CyrillicGaramond_Italic.ttf'); }
-@font-face { font-family: 'DejaVuSansMonoOblique'; src: url('fontls/DejaVu_Sans_Mono_Oblique.ttf'); }
-@font-face { font-family: 'DriverGothicProRegular'; src: url('fontls/Driver_Gothic_Pro_Regular.otf'); }
-@font-face { font-family: 'DroidSansBold'; src: url('fontls/Droid_Sans_Bold.ttf'); }
-@font-face { font-family: 'ElementaCyrBold'; src: url('fontls/ElementaCyr-Bold.otf'); }
-@font-face { font-family: 'ElementaCyrBoldItalicSC'; src: url('fontls/ElementaCyr-BoldItalicSC.otf'); }
-@font-face { font-family: 'ERKurier1251BoldItalic'; src: url('fontls/ER_Kurier_1251_Bold_Italic.ttf'); }
-@font-face { font-family: 'EurofurenceItalic'; src: url('fontls/Eurofurence_Italic.ttf'); }
-@font-face { font-family: 'ExcelsiorLTStdItalic'; src: url('fontls/Excelsior_LT_Std_Italic.otf'); }
-@font-face { font-family: 'Exo2ExtraLightItalic'; src: url('fontls/Exo_2_Extra_Light_Italic.otf'); }
-@font-face { font-family: 'Exo2MediumItalic'; src: url('fontls/Exo_2_Medium_Italic.otf'); }
-@font-face { font-family: 'FagotCondensed'; src: url('fontls/FagotCondensed.ttf'); }
-@font-face { font-family: 'FagotCondensedItalic'; src: url('fontls/FagotCondensed_Italic.ttf'); }
-@font-face { font-family: 'GabrielaRegular'; src: url('fontls/Gabriela_Regular.ttf'); }
-@font-face { font-family: 'Humnst777TLBoldItalic'; src: url('fontls/Humnst777_TL_Bold_Italic.ttf'); }
-@font-face { font-family: 'KovanovicCirilicaStampana'; src: url('fontls/Kovanovic_Cirilica_Stampana.ttf'); }
-@font-face { font-family: 'LeagueGothicCyrillic'; src: url('fontls/League_Gothic_Cyrillic.ttf'); }
-@font-face { font-family: 'RopaSansSCItalic'; src: url('fontls/Ropa_Sans_SC_Italic.otf'); }
-@font-face { font-family: 'YiggivooUnicode'; src: url('fontls/Yiggivoo_Unicode.ttf'); }
-@font-face { font-family: 'YiggivooUnicodeItalic'; src: url('fontls/Yiggivoo_Unicode__Italic.ttf'); }
+@font-face { font-family: 'CalligraphiaOne'; src: url('fontls/Calligraphia_One.ttf'); font-display: swap; }
+@font-face { font-family: 'AllegrettoScriptTwo'; src: url('fontls/Allegretto_Script_Two_Regular.ttf'); font-display: swap; }
+@font-face { font-family: 'AllegrettoScriptOne'; src: url('fontls/Allegretto_Script_One_Regular.ttf'); font-display: swap; }
+@font-face { font-family: 'AllegroScriptItalic'; src: url('fontls/AllegroScript_Italic.otf'); font-display: swap; }
+@font-face { font-family: 'SegoeScript'; src: url('fontls/Segoe_Script.ttf'); font-display: swap; }
+@font-face { font-family: 'BrockScriptD'; src: url('fontls/Brock_Script_D.ttf'); font-display: swap; }
+@font-face { font-family: 'DiscipuliBritannica'; src: url('fontls/Discipuli_Britannica.ttf'); font-display: swap; }
+@font-face { font-family: 'PresentScript'; src: url('fontls/PresentScript.ttf'); font-display: swap; }
+@font-face { font-family: 'EuroscriptPro'; src: url('fontls/Euroscript_Pro.otf'); font-display: swap; }
+@font-face { font-family: 'LovelyGrace'; src: url('fontls/Lovely_Grace_BG.ttf'); font-display: swap; }
+@font-face { font-family: 'ADayWithoutSun'; src: url('fontls/A_Day_Without_Sun.otf'); font-display: swap; }
+@font-face { font-family: 'AncientKyiv'; src: url('fontls/Ancient_Kyiv.ttf'); font-display: swap; }
+@font-face { font-family: 'AAHigherup'; src: url('fontls/AA-Higherup.ttf'); font-display: swap; }
+@font-face { font-family: 'AhellyaItalic'; src: url('fontls/Ahellya_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'AmbassadoreTypeShura'; src: url('fontls/Ambassadore_Type_Shura.ttf'); font-display: swap; }
+@font-face { font-family: 'AmbassadoreTypeItalic'; src: url('fontls/AmbassadoreType_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'AntiqueOliveItalic'; src: url('fontls/Antique_Olive_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'UbuntuMonoBold'; src: url('fontls/Ubuntu_Mono_Bold.ttf'); font-display: swap; }
+@font-face { font-family: 'VDSBold'; src: url('fontls/VDS_Bold.ttf'); font-display: swap; }
+@font-face { font-family: 'VeraHumana95BoldItalic'; src: url('fontls/Vera_Humana_95_BoldItalic.ttf'); font-display: swap; }
+@font-face { font-family: 'VDSItalic'; src: url('fontls/VDS_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'VDSItalicNew'; src: url('fontls/VDS_Italic_New.ttf'); font-display: swap; }
+@font-face { font-family: 'VDSNew'; src: url('fontls/VDS_New.ttf'); font-display: swap; }
+@font-face { font-family: 'VDSThin'; src: url('fontls/VDS_Thin.ttf'); font-display: swap; }
+@font-face { font-family: 'VDSThinItalic'; src: url('fontls/VDS_Thin_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'VodafoneExB'; src: url('fontls/Vodafone_ExB.ttf'); font-display: swap; }
+@font-face { font-family: 'VodafoneRgBold'; src: url('fontls/Vodafone_Rg_Bold.ttf'); font-display: swap; }
+@font-face { font-family: 'Watc'; src: url('fontls/Watc.TTF'); font-display: swap; }
+@font-face { font-family: 'Aroania'; src: url('fontls/Aroania.otf'); font-display: swap; }
+@font-face { font-family: 'AutoradiographicRgItalic'; src: url('fontls/Autoradiographic_Rg_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'Avdira'; src: url('fontls/Avdira.otf'); font-display: swap; }
+@font-face { font-family: 'AverBoldItalic'; src: url('fontls/Aver_Bold_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'Azbuka02Italic'; src: url('fontls/Azbuka02_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'BodoniCyrillicFWFBoldItalic'; src: url('fontls/BodoniCyrillicFWF_Bold_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'BloggerSansMediumRegular'; src: url('fontls/Blogger_Sans_Medium_Regular.otf'); font-display: swap; }
+@font-face { font-family: 'BookAntiquaItalic'; src: url('fontls/Book_Antiqua_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'BrillRoman'; src: url('fontls/Brill_Roman.otf'); font-display: swap; }
+@font-face { font-family: 'BravoRegular'; src: url('fontls/Bravo_Regular.otf'); font-display: swap; }
+@font-face { font-family: 'CandaraItalic'; src: url('fontls/Candara_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'CenturyGothicItalic'; src: url('fontls/Century_Gothic_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'CenturySchoolbookItalic'; src: url('fontls/Century_Schoolbook_Italic.otf'); font-display: swap; }
+@font-face { font-family: 'CenturySchoolbookBold'; src: url('fontls/Century_Schoolbook_Bold.otf'); font-display: swap; }
+@font-face { font-family: 'ChampagneLimousines'; src: url('fontls/Champagne_&_Limousines.ttf'); font-display: swap; }
+@font-face { font-family: 'CourierNewBold'; src: url('fontls/Courier_New_Bold.ttf'); font-display: swap; }
+@font-face { font-family: 'CourierMCYBold'; src: url('fontls/CourierMCY_Bold.ttf'); font-display: swap; }
+@font-face { font-family: 'CourierTMBoldItalic'; src: url('fontls/CourierTM_Bold_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'CyrillicGaramondItalic'; src: url('fontls/CyrillicGaramond_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'DejaVuSansMonoOblique'; src: url('fontls/DejaVu_Sans_Mono_Oblique.ttf'); font-display: swap; }
+@font-face { font-family: 'DriverGothicProRegular'; src: url('fontls/Driver_Gothic_Pro_Regular.otf'); font-display: swap; }
+@font-face { font-family: 'DroidSansBold'; src: url('fontls/Droid_Sans_Bold.ttf'); font-display: swap; }
+@font-face { font-family: 'ElementaCyrBold'; src: url('fontls/ElementaCyr-Bold.otf'); font-display: swap; }
+@font-face { font-family: 'ElementaCyrBoldItalicSC'; src: url('fontls/ElementaCyr-BoldItalicSC.otf'); font-display: swap; }
+@font-face { font-family: 'ERKurier1251BoldItalic'; src: url('fontls/ER_Kurier_1251_Bold_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'EurofurenceItalic'; src: url('fontls/Eurofurence_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'ExcelsiorLTStdItalic'; src: url('fontls/Excelsior_LT_Std_Italic.otf'); font-display: swap; }
+@font-face { font-family: 'Exo2ExtraLightItalic'; src: url('fontls/Exo_2_Extra_Light_Italic.otf'); font-display: swap; }
+@font-face { font-family: 'Exo2MediumItalic'; src: url('fontls/Exo_2_Medium_Italic.otf'); font-display: swap; }
+@font-face { font-family: 'FagotCondensed'; src: url('fontls/FagotCondensed.ttf'); font-display: swap; }
+@font-face { font-family: 'FagotCondensedItalic'; src: url('fontls/FagotCondensed_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'GabrielaRegular'; src: url('fontls/Gabriela_Regular.ttf'); font-display: swap; }
+@font-face { font-family: 'Humnst777TLBoldItalic'; src: url('fontls/Humnst777_TL_Bold_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'KovanovicCirilicaStampana'; src: url('fontls/Kovanovic_Cirilica_Stampana.ttf'); font-display: swap; }
+@font-face { font-family: 'LeagueGothicCyrillic'; src: url('fontls/League_Gothic_Cyrillic.ttf'); font-display: swap; }
+@font-face { font-family: 'RopaSansSCItalic'; src: url('fontls/Ropa_Sans_SC_Italic.otf'); font-display: swap; }
+@font-face { font-family: 'YiggivooUnicode'; src: url('fontls/Yiggivoo_Unicode.ttf'); font-display: swap; }
+@font-face { font-family: 'YiggivooUnicodeItalic'; src: url('fontls/Yiggivoo_Unicode__Italic.ttf'); font-display: swap; }
 
 * {
     box-sizing: border-box;
@@ -286,7 +286,7 @@ body {
     outline: none;
 }
 
-#sizeSlider, #weightSlider, #spacingSlider, #lineHeightSlider {
+#sizeSlider, #weightSlider, #spacingSlider, #lineHeightSlider, #glowOpacitySlider, #glowSizeSlider {
     background: rgba(255, 255, 255, 0.1);
 }
 
@@ -299,7 +299,7 @@ body {
     background: #ffffff;
     cursor: pointer;
     box-shadow: 0 0 4px rgba(0,0,0,0.5);
-    transition: transform 0.1s;
+    transition: transform(0.1s);
 }
 
 .range-slider::-webkit-slider-thumb:active {
@@ -312,14 +312,6 @@ body {
 
 #brightnessSlider, #glowBrightnessSlider {
     background: linear-gradient(to right, #000000, #ffffff);
-}
-
-#glowOpacitySlider {
-    background: linear-gradient(to right, transparent, #ffffff);
-}
-
-#glowSizeSlider {
-    background: rgba(255, 255, 255, 0.1);
 }
 
 .menu-wrapper {
@@ -341,6 +333,10 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 6px;
     animation: fadeIn 0.5s ease;
+}
+
+.glow-tile {
+    grid-column: 2;
 }
 
 .menu-tile {
@@ -501,7 +497,6 @@ body {
     padding: 0 15px;
     transition: filter 0.2s ease, text-shadow 0.2s ease; 
     paint-order: stroke fill;
-    will-change: filter, text-shadow;
 }
 
 .font-name {
@@ -549,18 +544,10 @@ body {
     color: #ffffff;
 }
 
-.align-btn svg, .menu-btn svg, .search-btn svg {
+.align-btn img, .menu-btn img, .search-btn img {
     width: 18px;
     height: 18px;
     display: block;
-}
-
-.align-btn svg path, .search-btn svg path {
-    fill: currentColor;
-}
-
-.menu-btn svg rect {
-    fill: currentColor;
 }
 
 .align-btn.active, .menu-btn.active, .search-btn.active {
@@ -657,10 +644,9 @@ body {
     text-decoration: none;
 }
 
-.github-link-btn svg {
+.github-link-btn img {
     width: 18px;
     height: 18px;
-    fill: currentColor;
 }
 
 .bottom-branding-panel:hover .github-link-btn {
