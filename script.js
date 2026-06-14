@@ -67,6 +67,50 @@ const fontsData = [
     { name: "Yiggivoo Unicode Italic", fontFamily: "YiggivooUnicodeItalic", defaultText: "Aa" }
 ];
 
+const translations = {
+    en: {
+        beta: "Beta test, bugs are possible",
+        inputPlaceholder: "Enter your text...",
+        size: "Size",
+        searchPlaceholder: "Font name...",
+        color: "Color",
+        weight: "Weight",
+        spacing: "Spacing",
+        brightness: "Brightness",
+        letterSpacing: "Letter",
+        lineHeight: "Line",
+        create: "Create",
+        modalTitle: "Ready!",
+        modalDownload: "Download PNG",
+        modalClose: "Close",
+        login: "Sign In",
+        logout: "Sign Out",
+        nothingFound: "Nothing found",
+        modalWarning: "Click «Download PNG».<br><strong style='color: #ffcc00; display: block; margin-top: 8px; font-size: 13px;'>If the button does not work (iPhone/Chrome) — try another browser (Safari) or tap and hold the image below and select «Save to Photos».</strong>"
+    },
+    ru: {
+        beta: "Бета-тест, возможны баги",
+        inputPlaceholder: "Введите свой текст...",
+        size: "Размер",
+        searchPlaceholder: "Название шрифта...",
+        color: "Цвет",
+        weight: "Жирность",
+        spacing: "Интервалы",
+        brightness: "Яркость",
+        letterSpacing: "Межбуквенный",
+        lineHeight: "Межстрочный",
+        create: "Создать",
+        modalTitle: "Готово!",
+        modalDownload: "Скачать PNG",
+        modalClose: "Закрыть",
+        login: "Войти",
+        logout: "Выйти",
+        nothingFound: "Ничего не найдено",
+        modalWarning: "Нажмите «Скачать PNG».<br><strong style='color: #ffcc00; display: block; margin-top: 8px; font-size: 13px;'>Если кнопка не работает (iPhone/Google chrome) — попробуйте другой браузер (Safari) или просто зажмите картинку ниже пальцем и выберите «Сохранить в Фото».</strong>"
+    }
+};
+
+let currentLang = 'en';
 let currentIndex = 0;
 let currentHue = 0;
 let currentBrightness = 100;
@@ -115,28 +159,84 @@ const closeModalBtn = document.getElementById('closeModalBtn');
 
 const MY_SITE = 'https://skibii323-web.github.io/qwsx/';
 const authContainer = document.getElementById('authContainer');
+const langSelector = document.getElementById('langSelector');
+
+function updateInterfaceLanguage(lang) {
+    currentLang = lang;
+    document.querySelectorAll('[data-lang]').forEach(btn => {
+        if(btn.getAttribute('data-lang') === lang) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            el.textContent = translations[lang][key];
+        }
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang] && translations[lang][key]) {
+            el.setAttribute('placeholder', translations[lang][key]);
+        }
+    });
+
+    updateAuthZone();
+}
+
+async function saveLanguage(lang) {
+    updateInterfaceLanguage(lang);
+    if (Clerk.user) {
+        await Clerk.user.update({
+            unsafeMetadata: { lang: lang }
+        });
+    }
+}
+
+function updateAuthZone() {
+    if (!Clerk.user) {
+        authContainer.innerHTML = `
+            <div class="auth-avatar-circle">
+                <img src="ikn/icon.svg" alt="Icon">
+            </div>
+            <span class="auth-text">${translations[currentLang].login}</span>
+        `;
+    } else {
+        authContainer.innerHTML = `
+            <div class="auth-avatar-circle">
+                <img src="${Clerk.user.imageUrl}" alt="Avatar">
+            </div>
+            <span class="auth-text">${translations[currentLang].logout}</span>
+        `;
+    }
+}
+
+langSelector.addEventListener('click', (e) => {
+    const target = e.target.closest('[data-lang]');
+    if (target) {
+        const selectedLang = target.getAttribute('data-lang');
+        saveLanguage(selectedLang);
+    }
+});
 
 window.addEventListener('load', async function () {
     await Clerk.load();
 
     if (Clerk.user) {
-        authContainer.innerHTML = `
-            <div class="auth-avatar-circle">
-                <img src="${Clerk.user.imageUrl}" alt="Avatar">
-            </div>
-            <span class="auth-text">Выйти</span>
-        `;
+        const savedLang = Clerk.user.unsafeMetadata.lang || 'en';
+        updateInterfaceLanguage(savedLang);
+
         authContainer.addEventListener('click', async () => {
             await Clerk.signOut();
             window.location.href = MY_SITE;
         });
     } else {
-        authContainer.innerHTML = `
-            <div class="auth-avatar-circle">
-                <img src="ikn/icon.svg" alt="Icon">
-            </div>
-            <span class="auth-text">Войти</span>
-        `;
+        updateInterfaceLanguage('en');
+
         authContainer.addEventListener('click', () => {
             Clerk.openSignIn({
                 redirectUrl: MY_SITE,
@@ -244,7 +344,7 @@ function renderSearchResults(query) {
         const noResult = document.createElement('div');
         noResult.className = 'search-item';
         noResult.style.color = '#636370';
-        noResult.textContent = 'Ничего не найдено';
+        noResult.textContent = translations[currentLang].nothingFound;
         searchResults.appendChild(noResult);
         return;
     }
@@ -449,9 +549,9 @@ applyBtn.addEventListener('click', () => {
             previewImg.style.backgroundColor = 'rgba(0,0,0,0.2)'; 
         }
 
-        const textDesc = modalBox.querySelector('p') || Array.from(modalBox.querySelectorAll('div, p, span')).find(el => el.textContent.includes('качест') || el.textContent.includes('x5') || el.textContent.includes('х5'));
+        const textDesc = modalBox.querySelector('p') || Array.from(modalBox.querySelectorAll('div, p, span')).find(el => el.textContent.includes('качест') || el.textContent.includes('x5') || el.textContent.includes('х5') || el.textContent.includes('Click') || el.textContent.includes('PNG'));
         if (textDesc) {
-            textDesc.innerHTML = 'Нажмите «Скачать PNG».<br><strong style="color: #ffcc00; display: block; margin-top: 8px; font-size: 13px;">Если кнопка не работает (iPhone/Google chrome) — попробуйте другой браузер (Safari) или просто зажмите картинку ниже пальцем и выберите «Сохранить в Фото».</strong>';
+            textDesc.innerHTML = translations[currentLang].modalWarning;
         }
 
         downloadModal.style.display = 'flex';
