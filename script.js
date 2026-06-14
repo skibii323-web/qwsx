@@ -1,703 +1,726 @@
-const fontsData = [
-    { name: "Calligraphia One", fontFamily: "CalligraphiaOne", defaultText: "Aa" },
-    { name: "Allegretto Script Two Regular", fontFamily: "AllegrettoScriptTwo", defaultText: "Aa" },
-    { name: "Allegretto Script One Regular", fontFamily: "AllegrettoScriptOne", defaultText: "Aa" },
-    { name: "AllegroScript Italic", fontFamily: "AllegroScriptItalic", defaultText: "Aa" },
-    { name: "Segoe Script", fontFamily: "SegoeScript", defaultText: "Aa" },
-    { name: "Brock Script D", fontFamily: "BrockScriptD", defaultText: "Aa" },
-    { name: "Discipuli Britannica", fontFamily: "DiscipuliBritannica", defaultText: "Aa" },
-    { name: "PresentScript", fontFamily: "PresentScript", defaultText: "Aa" },
-    { name: "Euroscript Pro", fontFamily: "EuroscriptPro", defaultText: "Aa" },
-    { name: "Lovely Grace BG", fontFamily: "LovelyGrace", defaultText: "Aa" },
-    { name: "A Day Without Sun", fontFamily: "ADayWithoutSun", defaultText: "Aa" },
-    { name: "Ancient Kyiv", fontFamily: "AncientKyiv", defaultText: "Aa" },
-    { name: "AA Higherup", fontFamily: "AAHigherup", defaultText: "Aa" },
-    { name: "Ahellya Italic", fontFamily: "AhellyaItalic", defaultText: "Aa" },
-    { name: "Ambassadore Type Shura", fontFamily: "AmbassadoreTypeShura", defaultText: "Aa" },
-    { name: "Ambassadore Type Italic", fontFamily: "AmbassadoreTypeItalic", defaultText: "Aa" },
-    { name: "Antique Olive Italic", fontFamily: "AntiqueOliveItalic", defaultText: "Aa" },
-    { name: "Ubuntu Mono Bold", fontFamily: "UbuntuMonoBold", defaultText: "Aa" },
-    { name: "VDS Bold", fontFamily: "VDSBold", defaultText: "Aa" },
-    { name: "Vera Humana 95 Bold Italic", fontFamily: "VeraHumana95BoldItalic", defaultText: "Aa" },
-    { name: "VDS Italic", fontFamily: "VDSItalic", defaultText: "Aa" },
-    { name: "VDS Italic New", fontFamily: "VDSItalicNew", defaultText: "Aa" },
-    { name: "VDS New", fontFamily: "VDSNew", defaultText: "Aa" },
-    { name: "VDS Thin", fontFamily: "VDSThin", defaultText: "Aa" },
-    { name: "VDS Thin Italic", fontFamily: "VDSThinItalic", defaultText: "Aa" },
-    { name: "Vodafone ExB", fontFamily: "VodafoneExB", defaultText: "Aa" },
-    { name: "Vodafone Rg Bold", fontFamily: "VodafoneRgBold", defaultText: "Aa" },
-    { name: "Watc", fontFamily: "Watc", defaultText: "Aa" },
-    { name: "Aroania", fontFamily: "Aroania", defaultText: "Aa" },
-    { name: "Autoradiographic Rg Italic", fontFamily: "AutoradiographicRgItalic", defaultText: "Aa" },
-    { name: "Avdira", fontFamily: "Avdira", defaultText: "Aa" },
-    { name: "Aver Bold Italic", fontFamily: "AverBoldItalic", defaultText: "Aa" },
-    { name: "Azbuka02 Italic", fontFamily: "Azbuka02Italic", defaultText: "Aa" },
-    { name: "Bodoni Cyrillic FWF Bold Italic", fontFamily: "BodoniCyrillicFWFBoldItalic", defaultText: "Aa" },
-    { name: "Blogger Sans Medium Regular", fontFamily: "BloggerSansMediumRegular", defaultText: "Aa" },
-    { name: "Book Antiqua Italic", fontFamily: "BookAntiquaItalic", defaultText: "Aa" },
-    { name: "Brill Roman", fontFamily: "BrillRoman", defaultText: "Aa" },
-    { name: "Bravo Regular", fontFamily: "BravoRegular", defaultText: "Aa" },
-    { name: "Candara Italic", fontFamily: "CandaraItalic", defaultText: "Aa" },
-    { name: "Century Gothic Italic", fontFamily: "CenturyGothicItalic", defaultText: "Aa" },
-    { name: "Century Schoolbook Italic", fontFamily: "CenturySchoolbookItalic", defaultText: "Aa" },
-    { name: "Century Schoolbook Bold", fontFamily: "CenturySchoolbookBold", defaultText: "Aa" },
-    { name: "Champagne & Limousines", fontFamily: "ChampagneLimousines", defaultText: "Aa" },
-    { name: "Courier New Bold", fontFamily: "CourierNewBold", defaultText: "Aa" },
-    { name: "Courier MCY Bold", fontFamily: "CourierMCYBold", defaultText: "Aa" },
-    { name: "Courier TM Bold Italic", fontFamily: "CourierTMBoldItalic", defaultText: "Aa" },
-    { name: "Cyrillic Garamond Italic", fontFamily: "CyrillicGaramondItalic", defaultText: "Aa" },
-    { name: "DejaVu Sans Mono Oblique", fontFamily: "DejaVuSansMonoOblique", defaultText: "Aa" },
-    { name: "Driver Gothic Pro Regular", fontFamily: "DriverGothicProRegular", defaultText: "Aa" },
-    { name: "Droid Sans Bold", fontFamily: "DroidSansBold", defaultText: "Aa" },
-    { name: "Elementa Cyr Bold", fontFamily: "ElementaCyrBold", defaultText: "Aa" },
-    { name: "Elementa Cyr Bold Italic SC", fontFamily: "ElementaCyrBoldItalicSC", defaultText: "Aa" },
-    { name: "ER Kurier 1251 Bold Italic", fontFamily: "ERKurier1251BoldItalic", defaultText: "Aa" },
-    { name: "Eurofurence Italic", fontFamily: "EurofurenceItalic", defaultText: "Aa" },
-    { name: "Excelsior LT Std Italic", fontFamily: "ExcelsiorLTStdItalic", defaultText: "Aa" },
-    { name: "Exo 2 Extra Light Italic", fontFamily: "Exo2ExtraLightItalic", defaultText: "Aa" },
-    { name: "Exo 2 Medium Italic", fontFamily: "Exo2MediumItalic", defaultText: "Aa" },
-    { name: "Fagot Condensed", fontFamily: "FagotCondensed", defaultText: "Aa" },
-    { name: "Fagot Condensed Italic", fontFamily: "FagotCondensedItalic", defaultText: "Aa" },
-    { name: "Gabriela Regular", fontFamily: "GabrielaRegular", defaultText: "Aa" },
-    { name: "Humnst777 TL Bold Italic", fontFamily: "Humnst777TLBoldItalic", defaultText: "Aa" },
-    { name: "Kovanovic Cirilica Stampana", fontFamily: "KovanovicCirilicaStampana", defaultText: "Aa" },
-    { name: "League Gothic Cyrillic", fontFamily: "LeagueGothicCyrillic", defaultText: "Aa" },
-    { name: "Ropa Sans SC Italic", fontFamily: "RopaSansSCItalic", defaultText: "Aa" },
-    { name: "Yiggivoo Unicode", fontFamily: "YiggivooUnicode", defaultText: "Aa" },
-    { name: "Yiggivoo Unicode Italic", fontFamily: "YiggivooUnicodeItalic", defaultText: "Aa" }
-];
+@font-face { font-family: 'CalligraphiaOne'; src: url('fontls/Calligraphia_One.ttf'); font-display: swap; }
+@font-face { font-family: 'AllegrettoScriptTwo'; src: url('fontls/Allegretto_Script_Two_Regular.ttf'); font-display: swap; }
+@font-face { font-family: 'AllegrettoScriptOne'; src: url('fontls/Allegretto_Script_One_Regular.ttf'); font-display: swap; }
+@font-face { font-family: 'AllegroScriptItalic'; src: url('fontls/AllegroScript_Italic.otf'); font-display: swap; }
+@font-face { font-family: 'SegoeScript'; src: url('fontls/Segoe_Script.ttf'); font-display: swap; }
+@font-face { font-family: 'BrockScriptD'; src: url('fontls/Brock_Script_D.ttf'); font-display: swap; }
+@font-face { font-family: 'DiscipuliBritannica'; src: url('fontls/Discipuli_Britannica.ttf'); font-display: swap; }
+@font-face { font-family: 'PresentScript'; src: url('fontls/PresentScript.ttf'); font-display: swap; }
+@font-face { font-family: 'EuroscriptPro'; src: url('fontls/Euroscript_Pro.otf'); font-display: swap; }
+@font-face { font-family: 'LovelyGrace'; src: url('fontls/Lovely_Grace_BG.ttf'); font-display: swap; }
+@font-face { font-family: 'ADayWithoutSun'; src: url('fontls/A_Day_Without_Sun.otf'); font-display: swap; }
+@font-face { font-family: 'AncientKyiv'; src: url('fontls/Ancient_Kyiv.ttf'); font-display: swap; }
+@font-face { font-family: 'AAHigherup'; src: url('fontls/AA-Higherup.ttf'); font-display: swap; }
+@font-face { font-family: 'AhellyaItalic'; src: url('fontls/Ahellya_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'AmbassadoreTypeShura'; src: url('fontls/Ambassadore_Type_Shura.ttf'); font-display: swap; }
+@font-face { font-family: 'AmbassadoreTypeItalic'; src: url('fontls/AmbassadoreType_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'AntiqueOliveItalic'; src: url('fontls/Antique_Olive_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'UbuntuMonoBold'; src: url('fontls/Ubuntu_Mono_Bold.ttf'); font-display: swap; }
+@font-face { font-family: 'VDSBold'; src: url('fontls/VDS_Bold.ttf'); font-display: swap; }
+@font-face { font-family: 'VeraHumana95BoldItalic'; src: url('fontls/Vera_Humana_95_BoldItalic.ttf'); font-display: swap; }
+@font-face { font-family: 'VDSItalic'; src: url('fontls/VDS_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'VDSItalicNew'; src: url('fontls/VDS_Italic_New.ttf'); font-display: swap; }
+@font-face { font-family: 'VDSNew'; src: url('fontls/VDS_New.ttf'); font-display: swap; }
+@font-face { font-family: 'VDSThin'; src: url('fontls/VDS_Thin.ttf'); font-display: swap; }
+@font-face { font-family: 'VDSThinItalic'; src: url('fontls/VDS_Thin_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'VodafoneExB'; src: url('fontls/Vodafone_ExB.ttf'); font-display: swap; }
+@font-face { font-family: 'VodafoneRgBold'; src: url('fontls/Vodafone_Rg_Bold.ttf'); font-display: swap; }
+@font-face { font-family: 'Watc'; src: url('fontls/Watc.TTF'); font-display: swap; }
+@font-face { font-family: 'Aroania'; src: url('fontls/Aroania.otf'); font-display: swap; }
+@font-face { font-family: 'AutoradiographicRgItalic'; src: url('fontls/Autoradiographic_Rg_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'Avdira'; src: url('fontls/Avdira.otf'); font-display: swap; }
+@font-face { font-family: 'AverBoldItalic'; src: url('fontls/Aver_Bold_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'Azbuka02Italic'; src: url('fontls/Azbuka02_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'BodoniCyrillicFWFBoldItalic'; src: url('fontls/BodoniCyrillicFWF_Bold_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'BloggerSansMediumRegular'; src: url('fontls/Blogger_Sans_Medium_Regular.otf'); font-display: swap; }
+@font-face { font-family: 'BookAntiquaItalic'; src: url('fontls/Book_Antiqua_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'BrillRoman'; src: url('fontls/Brill_Roman.otf'); font-display: swap; }
+@font-face { font-family: 'BravoRegular'; src: url('fontls/Bravo_Regular.otf'); font-display: swap; }
+@font-face { font-family: 'CandaraItalic'; src: url('fontls/Candara_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'CenturyGothicItalic'; src: url('fontls/Century_Gothic_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'CenturySchoolbookItalic'; src: url('fontls/Century_Schoolbook_Italic.otf'); font-display: swap; }
+@font-face { font-family: 'CenturySchoolbookBold'; src: url('fontls/Century_Schoolbook_Bold.otf'); font-display: swap; }
+@font-face { font-family: 'ChampagneLimousines'; src: url('fontls/Champagne_&_Limousines.ttf'); font-display: swap; }
+@font-face { font-family: 'CourierNewBold'; src: url('fontls/Courier_New_Bold.ttf'); font-display: swap; }
+@font-face { font-family: 'CourierMCYBold'; src: url('fontls/CourierMCY_Bold.ttf'); font-display: swap; }
+@font-face { font-family: 'CourierTMBoldItalic'; src: url('fontls/CourierTM_Bold_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'CyrillicGaramondItalic'; src: url('fontls/CyrillicGaramond_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'DejaVuSansMonoOblique'; src: url('fontls/DejaVu_Sans_Mono_Oblique.ttf'); font-display: swap; }
+@font-face { font-family: 'DriverGothicProRegular'; src: url('fontls/Driver_Gothic_Pro_Regular.otf'); font-display: swap; }
+@font-face { font-family: 'DroidSansBold'; src: url('fontls/Droid_Sans_Bold.ttf'); font-display: swap; }
+@font-face { font-family: 'ElementaCyrBold'; src: url('fontls/ElementaCyr-Bold.otf'); font-display: swap; }
+@font-face { font-family: 'ElementaCyrBoldItalicSC'; src: url('fontls/ElementaCyr-BoldItalicSC.otf'); font-display: swap; }
+@font-face { font-family: 'ERKurier1251BoldItalic'; src: url('fontls/ER_Kurier_1251_Bold_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'EurofurenceItalic'; src: url('fontls/Eurofurence_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'ExcelsiorLTStdItalic'; src: url('fontls/Excelsior_LT_Std_Italic.otf'); font-display: swap; }
+@font-face { font-family: 'Exo2ExtraLightItalic'; src: url('fontls/Exo_2_Extra_Light_Italic.otf'); font-display: swap; }
+@font-face { font-family: 'Exo2MediumItalic'; src: url('fontls/Exo_2_Medium_Italic.otf'); font-display: swap; }
+@font-face { font-family: 'FagotCondensed'; src: url('fontls/FagotCondensed.ttf'); font-display: swap; }
+@font-face { font-family: 'FagotCondensedItalic'; src: url('fontls/FagotCondensed_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'GabrielaRegular'; src: url('fontls/Gabriela_Regular.ttf'); font-display: swap; }
+@font-face { font-family: 'Humnst777TLBoldItalic'; src: url('fontls/Humnst777_TL_Bold_Italic.ttf'); font-display: swap; }
+@font-face { font-family: 'KovanovicCirilicaStampana'; src: url('fontls/Kovanovic_Cirilica_Stampana.ttf'); font-display: swap; }
+@font-face { font-family: 'LeagueGothicCyrillic'; src: url('fontls/League_Gothic_Cyrillic.ttf'); font-display: swap; }
+@font-face { font-family: 'RopaSansSCItalic'; src: url('fontls/Ropa_Sans_SC_Italic.otf'); font-display: swap; }
+@font-face { font-family: 'YiggivooUnicode'; src: url('fontls/Yiggivoo_Unicode.ttf'); font-display: swap; }
+@font-face { font-family: 'YiggivooUnicodeItalic'; src: url('fontls/Yiggivoo_Unicode__Italic.ttf'); font-display: swap; }
 
-const translations = {
-    en: {
-        beta: "Beta test, bugs are possible",
-        inputPlaceholder: "Enter your text...",
-        size: "Size",
-        searchPlaceholder: "Font name...",
-        color: "Color",
-        weight: "Weight",
-        spacing: "Spacing",
-        glow: "Glow",
-        opacity: "Opacity",
-        brightness: "Brightness",
-        letterSpacing: "Letter",
-        lineHeight: "Line",
-        create: "Create",
-        modalTitle: "Ready!",
-        modalDownload: "Download PNG",
-        modalClose: "Close",
-        login: "Sign In",
-        logout: "Sign Out",
-        nothingFound: "Nothing found",
-        modalWarning: "Click «Download PNG».<br><strong style='color: #ffcc00; display: block; margin-top: 8px; font-size: 13px;'>If the button does not work (iPhone/Chrome) — try another browser (Safari) or tap and hold the image below and select «Save to Photos».</strong>"
-    },
-    ru: {
-        beta: "Бета-тест, возможны баги",
-        inputPlaceholder: "Введите свой текст...",
-        size: "Размер",
-        searchPlaceholder: "Название шрифта...",
-        color: "Цвет",
-        weight: "Жирность",
-        spacing: "Интервалы",
-        glow: "Свечение",
-        opacity: "Прозрачн.",
-        brightness: "Яркость",
-        letterSpacing: "Межбуквенный",
-        lineHeight: "Межстрочный",
-        create: "Создать",
-        modalTitle: "Готово!",
-        modalDownload: "Скачать PNG",
-        modalClose: "Закрыть",
-        login: "Войти",
-        logout: "Выйти",
-        nothingFound: "Ничего не найдено",
-        modalWarning: "Нажмите «Скачать PNG».<br><strong style='color: #ffcc00; display: block; margin-top: 8px; font-size: 13px;'>Если кнопка не работает (iPhone/Google chrome) — попробуйте другой браузер (Safari) или просто зажмите картинку ниже пальцем и выберите «Сохранить в Фото».</strong>"
-    },
-    ua: {
-        beta: "Бета-тест, можливі баги",
-        inputPlaceholder: "Введіть свій текст...",
-        size: "Розмір",
-        searchPlaceholder: "Назва шрифту...",
-        color: "Колір",
-        weight: "Жирність",
-        spacing: "Інтервали",
-        glow: "Світіння",
-        opacity: "Прозорість",
-        brightness: "Яскравість",
-        letterSpacing: "Міжбуквений",
-        lineHeight: "Міжрядковий",
-        create: "Створити",
-        modalTitle: "Готово!",
-        modalDownload: "Завантажити PNG",
-        modalClose: "Закрити",
-        login: "Увійти",
-        logout: "Вийти",
-        nothingFound: "Нічого не знайдено",
-        modalWarning: "Натисніть «Завантажити PNG».<br><strong style='color: #ffcc00; display: block; margin-top: 8px; font-size: 13px;'>Якщо кнопка не працює (iPhone/Google chrome) — спробуйте інший браузер (Safari) або просто затисніть картинку нижче пальцем і виберіть «Зберегти в Фото».</strong>"
-    }
-};
-
-let currentLang = 'en';
-let currentIndex = 0;
-let currentHue = 0;
-let currentBrightness = 100;
-let currentWeight = 400;
-let currentSpacing = 0;
-let currentLineHeight = 1.3;
-let currentAlignment = 'center';
-let generatedDataUrl = null; 
-
-let currentGlowHue = 0;
-let currentGlowBright = 100;
-let currentGlowOpacity = 50;
-let currentGlowSize = 20;
-
-const fontPreview = document.getElementById('fontPreview');
-const fontName = document.getElementById('fontName');
-const textInput = document.getElementById('textInput');
-const sizeSlider = document.getElementById('sizeSlider');
-const sizeLabel = document.getElementById('sizeLabel');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-const applyBtn = document.getElementById('applyBtn');
-const alignButtons = document.querySelectorAll('.align-btn');
-
-const menuToggleBtn = document.getElementById('menuToggleBtn');
-const menuWrapper = document.getElementById('menuWrapper');
-const menuGrid = document.getElementById('menuGrid');
-const subPanels = document.querySelectorAll('.sub-panel');
-const menuTiles = document.querySelectorAll('.menu-tile');
-const backBtns = document.querySelectorAll('.back-btn');
-
-const colorSlider = document.getElementById('colorSlider');
-const brightnessSlider = document.getElementById('brightnessSlider');
-const brightLabel = document.getElementById('brightLabel');
-const weightSlider = document.getElementById('weightSlider');
-const weightLabel = document.getElementById('weightLabel');
-const spacingSlider = document.getElementById('spacingSlider');
-const spacingLabel = document.getElementById('spacingLabel');
-const lineHeightSlider = document.getElementById('lineHeightSlider');
-const lineHeightLabel = document.getElementById('lineHeightLabel');
-const indicator = document.getElementById('indicator');
-
-const glowColorSlider = document.getElementById('glowColorSlider');
-const glowBrightnessSlider = document.getElementById('glowBrightnessSlider');
-const glowOpacitySlider = document.getElementById('glowOpacitySlider');
-const glowSizeSlider = document.getElementById('glowSizeSlider');
-const glowIndicator = document.getElementById('glowIndicator');
-const glowBrightLabel = document.getElementById('glowBrightLabel');
-const glowOpacityLabel = document.getElementById('glowOpacityLabel');
-const glowSizeLabel = document.getElementById('glowSizeLabel');
-
-const searchBtn = document.getElementById('searchBtn');
-const searchPanel = document.getElementById('searchPanel');
-const fontSearchInput = document.getElementById('fontSearchInput');
-const searchResults = document.getElementById('searchResults');
-
-const downloadModal = document.getElementById('downloadModal');
-const confirmDownloadBtn = document.getElementById('confirmDownloadBtn');
-const closeModalBtn = document.getElementById('closeModalBtn');
-
-const MY_SITE = 'https://skibii323-web.github.io/qwsx/';
-const authContainer = document.getElementById('authContainer');
-
-const langDropdown = document.getElementById('langDropdown');
-const currentLangBtn = document.getElementById('currentLangBtn');
-const langDropdownContent = document.getElementById('langDropdownContent');
-
-function updateInterfaceLanguage(lang) {
-    currentLang = lang;
-    if (currentLangBtn) {
-        currentLangBtn.textContent = lang.toUpperCase();
-    }
-
-    document.querySelectorAll('#langDropdownContent button').forEach(btn => {
-        if(btn.getAttribute('data-lang') === lang) {
-            btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
-        }
-    });
-
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
-            el.textContent = translations[lang][key];
-        }
-    });
-
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-        const key = el.getAttribute('data-i18n-placeholder');
-        if (translations[lang] && translations[lang][key]) {
-            el.setAttribute('placeholder', translations[lang][key]);
-        }
-    });
-
-    updateAuthZone();
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
-async function saveLanguage(lang) {
-    updateInterfaceLanguage(lang);
-    if (Clerk.user) {
-        await Clerk.user.update({
-            unsafeMetadata: { lang: lang }
-        });
+body {
+    background: #0b0914;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #ffffff;
+    padding: 20px 20px 80px 20px;
+    position: relative;
+}
+
+.auth-top-left {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px 6px 6px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.15s ease, border-color 0.25s ease;
+    user-select: none;
+}
+
+.auth-top-left:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.auth-top-left:active {
+    transform: scale(0.97);
+}
+
+.auth-avatar-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.auth-avatar-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.auth-top-left .auth-avatar-circle img[src*="icon.svg"] {
+    width: 16px;
+    height: 16px;
+    filter: invert(1);
+    opacity: 0.8;
+}
+
+.auth-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: 0.3px;
+}
+
+.lang-dropdown {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: inline-block;
+}
+
+.lang-dropbtn {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.lang-dropbtn::after {
+    content: '▼';
+    font-size: 8px;
+    color: #636370;
+    transition: transform 0.2s;
+}
+
+.lang-dropdown.open .lang-dropbtn::after {
+    transform: rotate(180deg);
+}
+
+.lang-dropdown-content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    background: rgba(11, 9, 20, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    min-width: 80px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    overflow: hidden;
+    animation: fadeIn 0.2s ease;
+}
+
+.lang-dropdown.open .lang-dropdown-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.lang-dropdown-content button {
+    background: transparent;
+    border: none;
+    color: #8a8a9e;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.lang-dropdown-content button:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+.lang-dropdown-content button.active {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    padding: 30px 24px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 28px;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+}
+
+.input-box {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.custom-input {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.custom-input:focus {
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.control-box {
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 10px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.control-label {
+    font-size: 12px;
+    color: #8a8a9e;
+    min-width: 50px;
+    text-align: left;
+}
+
+.range-slider {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    border-radius: 4px;
+    outline: none;
+}
+
+#sizeSlider, #weightSlider, #spacingSlider, #lineHeightSlider, #glowOpacitySlider, #glowSizeSlider {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 0 4px rgba(0,0,0,0.5);
+    transition: transform(0.1s);
+}
+
+.range-slider::-webkit-slider-thumb:active {
+    transform: scale(1.3);
+}
+
+#colorSlider, #glowColorSlider {
+    background: linear-gradient(to right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%);
+}
+
+#brightnessSlider, #glowBrightnessSlider {
+    background: linear-gradient(to right, #000000, #ffffff);
+}
+
+.menu-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s cubic-bezier(0.33, 1, 0.68, 1), margin-bottom 0.65s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.5s ease-in-out;
+    opacity: 0;
+    margin-bottom: 0;
+}
+
+.menu-wrapper.open {
+    max-height: 400px;
+    margin-bottom: 15px;
+    opacity: 1;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    animation: fadeIn 0.5s ease;
+}
+
+.glow-tile {
+    grid-column: 2;
+}
+
+.menu-tile {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 16px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    aspect-ratio: 1;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.menu-tile:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.menu-tile:active {
+    transform: translateY(1px);
+}
+
+.menu-tile svg {
+    width: 28px;
+    height: 28px;
+    fill: #fff;
+    opacity: 0.9;
+    transition: transform 0.2s;
+}
+
+.menu-tile:hover svg {
+    transform: scale(1.1);
+}
+
+.menu-tile span {
+    font-size: 13px;
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+.sub-panel {
+    display: none;
+    flex-direction: column;
+}
+
+.sub-panel.active {
+    display: flex;
+    animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sub-panel .control-box:last-child {
+    margin-bottom: 0;
+}
+
+.back-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 10px 16px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    width: fit-content;
+    transition: all 0.2s;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(-2px);
+}
+
+.back-btn svg {
+    width: 18px;
+    fill: currentColor;
+}
+
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.search-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s cubic-bezier(0.33, 1, 0.68, 1), margin-bottom 0.65s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.5s ease-in-out;
+    opacity: 0;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.search-panel.open {
+    max-height: 200px;
+    margin-bottom: 15px;
+    opacity: 1;
+}
+
+.search-results {
+    max-height: 120px;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.search-item {
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.search-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.slider-wrapper {
+    overflow: hidden;
+    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.font-card {
+    padding: 30px 15px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.font-preview {
+    font-size: 48px;
+    line-height: 1.3;
+    margin-bottom: 15px;
+    color: #ffffff;
+    word-break: break-word;
+    text-align: center;
+    padding: 0 15px;
+    transition: filter 0.2s ease, text-shadow 0.2s ease; 
+    paint-order: stroke fill;
+}
+
+.font-name {
+    font-size: 14px;
+    color: #636370;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 6px;
+    border-radius: 18px;
+    margin-bottom: 20px;
+}
+
+.left-tools {
+    display: flex;
+    gap: 4px;
+    flex: 1;
+}
+
+.align-btn, .menu-btn, .search-btn, .nav-btn {
+    height: 40px;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    color: #636370;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex: 1;
+    min-width: 32px;
+    max-width: 44px;
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.04);
+    color: #ffffff;
+}
+
+.align-btn img, .menu-btn img, .search-btn img {
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+.align-btn.active, .menu-btn.active, .search-btn.active {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+.color-indicator {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: inline-block;
+}
+
+.nav-group {
+    display: flex;
+    gap: 4px;
+}
+
+.nav-btn:active, .align-btn:active, .menu-btn:active, .search-btn:active {
+    transform: scale(0.95);
+}
+
+.action-btn {
+    width: 100%;
+    padding: 16px;
+    background: #ffffff;
+    color: #0b0914;
+    border: none;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.action-btn:active {
+    background: #e0e0e0;
+    transform: scale(0.98);
+}
+
+.bottom-branding-panel {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 14px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 999;
+}
+
+.brand-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+}
+
+.brand-badge img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    opacity: 0.25;
+    transition: opacity 0.25s ease;
+}
+
+.brand-text {
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: color 0.25s ease;
+}
+
+.brand-divider {
+    width: 1px;
+    height: 16px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.github-link-btn {
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.25);
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+
+.github-link-btn img {
+    width: 18px;
+    height: 18px;
+}
+
+.bottom-branding-panel:hover .github-link-btn {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.bottom-branding-panel:hover .brand-badge img {
+    opacity: 0.65;
+}
+
+.bottom-branding-panel:hover .brand-text {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.github-link-btn:hover {
+    transform: scale(1.1);
+}
+
+.github-link-btn:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 480px) {
+    .bottom-branding-panel {
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 15px;
+    }
+    .auth-top-left {
+        top: 15px;
+        left: 15px;
+    }
+    .lang-dropdown {
+        top: 15px;
+        right: 15px;
     }
 }
 
-function updateAuthZone() {
-    if (!Clerk.user) {
-        authContainer.innerHTML = `
-            <div class="auth-avatar-circle">
-                <img src="ikn/icon.svg" alt="Icon">
-            </div>
-            <span class="auth-text">${translations[currentLang].login}</span>
-        `;
-    } else {
-        authContainer.innerHTML = `
-            <div class="auth-avatar-circle">
-                <img src="${Clerk.user.imageUrl}" alt="Avatar">
-            </div>
-            <span class="auth-text">${translations[currentLang].logout}</span>
-        `;
-    }
+@media (hover: hover) {
+    .nav-btn:hover { background: rgba(255, 255, 255, 0.1); }
+    .align-btn:hover, .menu-btn:hover, .search-btn:hover { color: #fff; }
+    .action-btn:hover { background: #f0f0f0; }
 }
 
-currentLangBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    langDropdown.classList.toggle('open');
-});
-
-document.addEventListener('click', () => {
-    langDropdown.classList.remove('open');
-});
-
-langDropdownContent.addEventListener('click', (e) => {
-    const target = e.target.closest('[data-lang]');
-    if (target) {
-        const selectedLang = target.getAttribute('data-lang');
-        saveLanguage(selectedLang);
-        langDropdown.classList.remove('open');
-    }
-});
-
-window.addEventListener('load', async function () {
-    await Clerk.load();
-
-    if (Clerk.user) {
-        const savedLang = Clerk.user.unsafeMetadata.lang || 'en';
-        updateInterfaceLanguage(savedLang);
-
-        authContainer.addEventListener('click', async () => {
-            await Clerk.signOut();
-            window.location.href = MY_SITE;
-        });
-    } else {
-        updateInterfaceLanguage('en');
-
-        authContainer.addEventListener('click', () => {
-            Clerk.openSignIn({
-                redirectUrl: MY_SITE,
-                afterSignInUrl: MY_SITE,
-                afterSignUpUrl: MY_SITE
-            });
-        });
-    }
-});
-
-function updateSlider(index) {
-    const currentFont = fontsData[index];
-    fontName.textContent = currentFont.name;
-    fontPreview.style.fontFamily = currentFont.fontFamily;
-    
-    if (textInput.value.trim() === "") {
-        fontPreview.textContent = currentFont.defaultText;
-    } else {
-        fontPreview.textContent = textInput.value;
-    }
+.menu-tile img, .align-btn img, .menu-btn img, .search-btn img, .back-btn img, .github-link-btn img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    filter: invert(1);
+    opacity: 0.35;
+    transition: opacity 0.5s ease, filter 0.5s ease;
 }
 
-function updateTextColor() {
-    const hslColor = `hsl(${currentHue}, 100%, ${currentBrightness}%)`;
-    fontPreview.style.color = hslColor;
-    indicator.style.backgroundColor = hslColor;
-    brightnessSlider.style.background = `linear-gradient(to right, #000000, hsl(${currentHue}, 100%, 50%), #ffffff)`;
-    fontPreview.style.filter = 'none';
-    updateGlowDOM();
+.menu-tile:hover img, .align-btn:hover img, .menu-btn:hover img, .search-btn:hover img, .back-btn:hover img {
+    opacity: 0.7;
 }
 
-function updateGlowDOM() {
-    const a = currentGlowOpacity / 100;
-    const colorStr = `hsla(${currentGlowHue}, 100%, ${currentGlowBright}%, ${a})`;
-    glowIndicator.style.backgroundColor = `hsl(${currentGlowHue}, 100%, ${currentGlowBright}%)`;
-    
-    glowBrightnessSlider.style.background = `linear-gradient(to right, #000000, hsl(${currentGlowHue}, 100%, 50%), #ffffff)`;
-    glowOpacitySlider.style.background = `linear-gradient(to right, transparent, hsl(${currentGlowHue}, 100%, ${currentGlowBright}%))`;
-
-    if (currentGlowOpacity == 0 || currentGlowSize == 0) {
-        fontPreview.style.textShadow = 'none';
-    } else {
-        const s = parseInt(currentGlowSize);
-        fontPreview.style.textShadow = `
-            0 0 ${s * 0.1}px ${colorStr},
-            0 0 ${s * 0.2}px ${colorStr},
-            0 0 ${s * 0.3}px ${colorStr},
-            0 0 ${s * 0.5}px ${colorStr},
-            0 0 ${s * 0.75}px ${colorStr},
-            0 0 ${s}px ${colorStr},
-            0 0 ${s * 1.25}px ${colorStr},
-            0 0 ${s * 1.5}px ${colorStr}
-        `;
-    }
+.align-btn.active img, .menu-btn.active img, .search-btn.active img {
+    filter: invert(1) brightness(1.2);
+    opacity: 1 !important;
 }
 
-function updateWeightDOM() {
-    const weightValue = parseInt(currentWeight);
-    const userSize = parseInt(sizeSlider.value);
-    
-    if (weightValue > 400) {
-        const strokeWidth = userSize * ((weightValue - 400) / 500) * 0.04;
-        fontPreview.style.webkitTextStroke = `${strokeWidth}px currentColor`;
-        fontPreview.style.fontWeight = 'normal'; 
-    } else {
-        fontPreview.style.webkitTextStroke = '0px transparent';
-        fontPreview.style.fontWeight = 'normal';
-    }
-
-    updateTextColor();
+.menu-tile:active img, .back-btn:active img {
+    filter: invert(1) brightness(1.2);
+    opacity: 1;
 }
 
-menuToggleBtn.addEventListener('click', () => {
-    menuToggleBtn.classList.toggle('active');
-    menuWrapper.classList.toggle('open');
-    if (menuWrapper.classList.contains('open')) {
-        searchBtn.classList.remove('active');
-        searchPanel.classList.remove('open');
-    } else {
-        setTimeout(() => {
-            subPanels.forEach(p => p.classList.remove('active'));
-            menuGrid.style.display = 'grid';
-        }, 300);
-    }
-});
-
-menuTiles.forEach(tile => {
-    tile.addEventListener('click', () => {
-        const targetId = tile.getAttribute('data-target');
-        menuGrid.style.display = 'none';
-        document.getElementById(targetId).classList.add('active');
-    });
-});
-
-backBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        subPanels.forEach(p => p.classList.remove('active'));
-        menuGrid.style.display = 'grid';
-    });
-});
-
-searchBtn.addEventListener('click', () => {
-    searchBtn.classList.toggle('active');
-    searchPanel.classList.toggle('open');
-    if (searchPanel.classList.contains('open')) {
-        menuToggleBtn.classList.remove('active');
-        menuWrapper.classList.remove('open');
-        fontSearchInput.value = '';
-        renderSearchResults('');
-        fontSearchInput.focus();
-    }
-});
-
-fontSearchInput.addEventListener('input', (e) => {
-    renderSearchResults(e.target.value);
-});
-
-function renderSearchResults(query) {
-    searchResults.innerHTML = '';
-    const filtered = fontsData.filter(f => f.name.toLowerCase().includes(query.toLowerCase()));
-    
-    if (filtered.length === 0) {
-        const noResult = document.createElement('div');
-        noResult.className = 'search-item';
-        noResult.style.color = '#636370';
-        noResult.textContent = translations[currentLang].nothingFound;
-        searchResults.appendChild(noResult);
-        return;
-    }
-
-    filtered.forEach(font => {
-        const item = document.createElement('div');
-        item.className = 'search-item';
-        item.textContent = font.name;
-        item.addEventListener('click', () => {
-            currentIndex = fontsData.indexOf(font);
-            updateSlider(currentIndex);
-            searchBtn.classList.remove('active');
-            searchPanel.classList.remove('open');
-        });
-        searchResults.appendChild(item);
-    });
+.beta-text {
+    font-size: 11px;
+    color: #ffffff;
+    opacity: 0.22;
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+    user-select: none;
 }
-
-colorSlider.addEventListener('input', (e) => {
-    currentHue = e.target.value;
-    updateTextColor();
-});
-
-brightnessSlider.addEventListener('input', (e) => {
-    currentBrightness = e.target.value;
-    brightLabel.textContent = `${currentBrightness}%`;
-    updateTextColor();
-});
-
-weightSlider.addEventListener('input', (e) => {
-    currentWeight = e.target.value;
-    weightLabel.textContent = currentWeight;
-    updateWeightDOM();
-});
-
-spacingSlider.addEventListener('input', (e) => {
-    currentSpacing = e.target.value;
-    spacingLabel.textContent = `${currentSpacing}px`;
-    fontPreview.style.letterSpacing = `${currentSpacing}px`;
-});
-
-lineHeightSlider.addEventListener('input', (e) => {
-    currentLineHeight = parseFloat(e.target.value);
-    lineHeightLabel.textContent = currentLineHeight;
-    fontPreview.style.lineHeight = currentLineHeight;
-});
-
-sizeSlider.addEventListener('input', (e) => {
-    const currentSize = e.target.value;
-    fontPreview.style.fontSize = `${currentSize}px`;
-    sizeLabel.textContent = `${currentSize}px`;
-    updateWeightDOM();
-});
-
-glowColorSlider.addEventListener('input', (e) => {
-    currentGlowHue = e.target.value;
-    updateGlowDOM();
-});
-
-glowBrightnessSlider.addEventListener('input', (e) => {
-    currentGlowBright = e.target.value;
-    glowBrightLabel.textContent = `${currentGlowBright}%`;
-    updateGlowDOM();
-});
-
-glowOpacitySlider.addEventListener('input', (e) => {
-    currentGlowOpacity = e.target.value;
-    glowOpacityLabel.textContent = `${currentGlowOpacity}%`;
-    updateGlowDOM();
-});
-
-glowSizeSlider.addEventListener('input', (e) => {
-    currentGlowSize = e.target.value;
-    glowSizeLabel.textContent = `${currentGlowSize}px`;
-    updateGlowDOM();
-});
-
-textInput.addEventListener('input', () => {
-    updateSlider(currentIndex);
-});
-
-alignButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        alignButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active'); 
-        currentAlignment = button.getAttribute('data-align');
-        fontPreview.style.textAlign = currentAlignment;
-    });
-});
-
-prevBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex === 0) ? fontsData.length - 1 : currentIndex - 1;
-    updateSlider(currentIndex);
-});
-
-nextBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex === fontsData.length - 1) ? 0 : currentIndex + 1;
-    updateSlider(currentIndex);
-});
-
-function wrapText(ctx, text, maxWidth) {
-    const lines = [];
-    const paragraphs = text.split('\n');
-    
-    paragraphs.forEach(paragraph => {
-        const words = paragraph.split(' ');
-        let currentLine = '';
-
-        for (let n = 0; n < words.length; n++) {
-            let testLine = currentLine + (currentLine ? ' ' : '') + words[n];
-            let metrics = ctx.measureText(testLine);
-            
-            if (metrics.width > maxWidth && n > 0) {
-                lines.push(currentLine);
-                currentLine = words[n];
-            } else {
-                currentLine = testLine;
-            }
-        }
-        if (currentLine) {
-            lines.push(currentLine);
-        }
-    });
-    return lines;
-}
-
-applyBtn.addEventListener('click', () => {
-    const textToRender = fontPreview.textContent;
-    const activeFont = fontsData[currentIndex];
-    const userSize = parseInt(sizeSlider.value);
-    
-    const scaleFactor = 5; 
-    const dynamicPadding = Math.max(40, parseInt(currentGlowSize) * 1.5 + 20);
-    const canvasPadding = dynamicPadding * scaleFactor; 
-
-    const previewRect = fontPreview.getBoundingClientRect();
-    const computedStyle = window.getComputedStyle(fontPreview);
-    
-    const paddingLeft = parseFloat(computedStyle.paddingLeft) || 0;
-    const paddingRight = parseFloat(computedStyle.paddingRight) || 0;
-    const previewTextWidth = previewRect.width - paddingLeft - paddingRight;
-
-    document.fonts.ready.then(() => {
-        const testCanvas = document.createElement('canvas');
-        const testCtx = testCanvas.getContext('2d');
-        const fontSize = userSize * scaleFactor;
-        const scaledSpacing = currentSpacing * scaleFactor;
-        
-        testCtx.font = `normal ${fontSize}px "${activeFont.fontFamily}"`;
-        testCtx.letterSpacing = `${scaledSpacing}px`;
-        const maxCanvasTextWidth = previewTextWidth * scaleFactor;
-
-        const lines = wrapText(testCtx, textToRender, maxCanvasTextWidth);
-
-        const lineHeight = fontSize * currentLineHeight;
-        const bottomBuffer = fontSize * 0.1; 
-        const totalTextHeight = (lines.length * lineHeight) + bottomBuffer;
-
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = maxCanvasTextWidth + (canvasPadding * 2);
-        canvas.height = totalTextHeight + (canvasPadding * 2);
-
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.shadowColor = "transparent";
-        ctx.shadowBlur = 0;
-        ctx.shadowOffsetX = 0;
-        ctx.shadowOffsetY = 0;
-
-        ctx.font = `normal ${fontSize}px "${activeFont.fontFamily}"`;
-        ctx.letterSpacing = `${scaledSpacing}px`;
-        ctx.fillStyle = `hsl(${currentHue}, 100%, ${currentBrightness}%)`;
-        ctx.textBaseline = 'top'; 
-
-        const weightValue = parseInt(currentWeight);
-        if (weightValue > 400) {
-            ctx.strokeStyle = ctx.fillStyle;
-            ctx.lineWidth = fontSize * ((weightValue - 400) / 500) * 0.04;
-            ctx.lineJoin = 'round';
-            ctx.lineCap = 'round';
-        }
-
-        let xPos = canvasPadding;
-        if (currentAlignment === 'center') {
-            ctx.textAlign = 'center';
-            xPos = canvas.width / 2;
-        } else if (currentAlignment === 'right') {
-            ctx.textAlign = 'right';
-            xPos = canvas.width - canvasPadding;
-        } else {
-            ctx.textAlign = 'left';
-        }
-
-        let yPos = canvasPadding;
-        lines.forEach(line => {
-            if (currentGlowOpacity > 0 && currentGlowSize > 0) {
-                const a = currentGlowOpacity / 100;
-                const c = `hsla(${currentGlowHue}, 100%, ${currentGlowBright}%, ${a})`;
-                const s = currentGlowSize * scaleFactor;
-                
-                ctx.shadowColor = c;
-                
-                const layers = [s * 0.1, s * 0.2, s * 0.3, s * 0.5, s * 0.75, s, s * 1.25, s * 1.5];
-                layers.forEach(blur => {
-                    ctx.shadowBlur = blur;
-                    ctx.shadowOffsetX = 0;
-                    ctx.shadowOffsetY = 0;
-                    if (weightValue > 400) {
-                        ctx.strokeText(line, xPos, yPos);
-                    }
-                    ctx.fillText(line, xPos, yPos);
-                });
-                
-                ctx.shadowColor = "transparent";
-                ctx.shadowBlur = 0;
-            }
-
-            if (weightValue > 400) {
-                ctx.strokeText(line, xPos, yPos);
-            }
-            ctx.fillText(line, xPos, yPos);
-            yPos += lineHeight;
-        });
-
-        generatedDataUrl = canvas.toDataURL("image/png");
-
-        const modalBox = downloadModal.querySelector('div');
-        
-        let previewImg = document.getElementById('finalMobileImage');
-        if (!previewImg) {
-            previewImg = document.createElement('img');
-            previewImg.id = 'finalMobileImage';
-            previewImg.style.width = '100%';
-            previewImg.style.maxHeight = '180px';
-            previewImg.style.objectFit = 'contain';
-            previewImg.style.borderRadius = '10px';
-            previewImg.style.marginBottom = '15px';
-            previewImg.style.border = '1px dashed rgba(255,255,255,0.3)';
-            modalBox.insertBefore(previewImg, confirmDownloadBtn);
-        }
-        previewImg.src = generatedDataUrl;
-
-        if (parseInt(currentBrightness) < 30) {
-            previewImg.style.backgroundColor = '#ffffff';
-        } else {
-            previewImg.style.backgroundColor = 'rgba(0,0,0,0.2)'; 
-        }
-
-        const textDesc = modalBox.querySelector('p') || Array.from(modalBox.querySelectorAll('div, p, span')).find(el => el.textContent.includes('качест') || el.textContent.includes('x5') || el.textContent.includes('х5') || el.textContent.includes('Click') || el.textContent.includes('PNG'));
-        if (textDesc) {
-            textDesc.innerHTML = translations[currentLang].modalWarning;
-        }
-
-        downloadModal.style.display = 'flex';
-
-        closeModalBtn.onclick = () => {
-            downloadModal.style.display = 'none';
-        };
-    });
-});
-
-confirmDownloadBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (!generatedDataUrl) return;
-
-    const filename = `font_${Date.now()}.png`;
-
-    const link = document.createElement('a');
-    link.style.display = 'none';
-    link.href = generatedDataUrl;
-    link.setAttribute('download', filename);
-    
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-});
-
-updateSlider(currentIndex);
-updateTextColor();
-updateWeightDOM();
